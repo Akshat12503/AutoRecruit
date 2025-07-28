@@ -1,0 +1,672 @@
+{
+  "name": "auto recruit",
+  "nodes": [
+    {
+      "parameters": {
+        "text": "={{ $json.text }}",
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"Name\": {\n      \"type\": \"string\",\n      \"description\": \"Full name of the candidate\"\n    },\n    \"Contact Information\": {\n      \"type\": \"string\",\n      \"description\": \"Email, phone number, and other contact details\"\n    },\n    \"Summary\": {\n      \"type\": \"string\",\n      \"description\": \"Brief professional summary or objective statement\"\n    },\n    \"Skills\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"List of key skills\"\n    },\n    \"Programming Languages\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"List of programming languages known\"\n    },\n    \"Work Experience\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Company\": { \"type\": \"string\" },\n          \"Role\": { \"type\": \"string\" },\n          \"Duration\": { \"type\": \"string\" },\n          \"Responsibilities\": { \"type\": \"string\" }\n        }\n      },\n      \"description\": \"List of work experiences\"\n    },\n    \"Internships\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Company\": { \"type\": \"string\" },\n          \"Role\": { \"type\": \"string\" },\n          \"Duration\": { \"type\": \"string\" },\n          \"Responsibilities\": { \"type\": \"string\" }\n        }\n      },\n      \"description\": \"List of internships\"\n    },\n    \"Projects\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Title\": { \"type\": \"string\" },\n          \"Description\": { \"type\": \"string\" },\n          \"Technologies Used\": { \"type\": \"array\", \"items\": { \"type\": \"string\" } }\n        }\n      },\n      \"description\": \"List of projects\"\n    },\n    \"Education\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Institution\": { \"type\": \"string\" },\n          \"Degree\": { \"type\": \"string\" },\n          \"Field of Study\": { \"type\": \"string\" },\n          \"Year of Completion\": { \"type\": \"string\" }\n        }\n      },\n      \"description\": \"Educational background\"\n    },\n    \"Certifications\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Title\": { \"type\": \"string\" },\n          \"Issuing Organization\": { \"type\": \"string\" },\n          \"Year\": { \"type\": \"string\" }\n        }\n      },\n      \"description\": \"List of certifications\"\n    },\n    \"Achievements\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"List of achievements\"\n    },\n    \"Publications\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Title\": { \"type\": \"string\" },\n          \"Publication Venue\": { \"type\": \"string\" },\n          \"Year\": { \"type\": \"string\" }\n        }\n      },\n      \"description\": \"List of research papers or articles\"\n    },\n    \"Open Source Contributions\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"List of open-source projects contributed to\"\n    },\n    \"Leadership Roles\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Role\": { \"type\": \"string\" },\n          \"Organization\": { \"type\": \"string\" },\n          \"Duration\": { \"type\": \"string\" }\n        }\n      },\n      \"description\": \"List of leadership positions held\"\n    },\n    \"Volunteer Experience\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Organization\": { \"type\": \"string\" },\n          \"Role\": { \"type\": \"string\" },\n          \"Duration\": { \"type\": \"string\" }\n        }\n      },\n      \"description\": \"List of volunteer activities\"\n    },\n    \"Awards\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"Title\": { \"type\": \"string\" },\n          \"Year\": { \"type\": \"string\" }\n        }\n      },\n      \"description\": \"List of awards received\"\n    },\n    \"Soft Skills\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"List of soft skills\"\n    },\n    \"Technical Skills\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"List of technical skills\"\n    },\n    \"Tools & Technologies\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"List of software tools and technologies used\"\n    },\n    \"Relevant Courses\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"Relevant coursework taken\"\n    },\n    \"Languages Spoken\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"Languages the candidate can speak\"\n    },\n    \"Links\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"GitHub\": { \"type\": \"string\" },\n        \"LinkedIn\": { \"type\": \"string\" },\n        \"Portfolio\": { \"type\": \"string\" }\n      },\n      \"description\": \"Relevant online profiles and portfolio links\"\n    },\n    \"Interests\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"description\": \"List of personal or professional interests\"\n    }\n  },\n  \"required\": [\"Name\", \"Contact Information\", \"Education\"],\n  \"additionalProperties\": false,\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\"\n}",
+        "options": {
+          "systemPromptTemplate": "this text contains text from resume, you have to make its table/csv according to this list, if any value or information is missing simply leave it blank. list: Name, Contact Information, Summary, Skills, Programming Languages, Work Experience, Internships, Projects, Education, Certifications, Achievements, Publications, Open Source Contributions, Leadership Roles, Volunteer Experience, Awards, Soft Skills, Technical Skills, Tools & Technologies, Relevant Courses, Languages Spoken, Links (GitHub, LinkedIn, Portfolio), Interests."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        -180
+      ],
+      "id": "da9278b4-77e3-4020-b370-87607815cbe3",
+      "name": "Information Extractor"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -552,
+        40
+      ],
+      "id": "5a0817c3-54cf-4ae2-b1af-6066805787e3",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "lrYtChMu3vZ4ehmb",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Recruitment form",
+        "formDescription": "We'll back to you soon",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Resume",
+              "fieldType": "file",
+              "acceptFileTypes": ".pdf",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -1080,
+        -180
+      ],
+      "id": "5dfca5eb-bde0-40bb-b0b9-a617acd74807",
+      "name": "On form submission",
+      "webhookId": "65387fb7-ddfa-41cb-a8a4-f9d37b636334"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "Resume",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        -180
+      ],
+      "id": "1b80eec8-4ffe-4828-abb5-b52d589bc221",
+      "name": "Extract from File",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"company_intro\": \"We are an AI solutions company specializing in tailored AI applications, including AI agents, chatbots, schedulers, call takers, lead generation, and AI-based marketing. We utilize cutting-edge tools like AWS, Docker, n8n, Python, R, and Java, machine learning frameworks such as TensorFlow and PyTorch, and tools for data manipulation, visualization, and model evaluatio to create seamless automation solutions.\",\n  \"job_description\": \"We are looking for a *AI/ML Engineer* to develops and deploys machine learning models, translating complex data into AI-driven solutions for real-time environments, including writing code, deploying models, and continuously monitoring and updating them\",\n  \"resume_rating_criteria\": \"Relevance (25), Experience (20), Skills (15), Formatting (10), Grammar (10), Projects (10), ATS Compatibility (10)\"\n}\n",
+        "includeOtherFields": true,
+        "include": "selected",
+        "includeFields": "myNewField, output",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -264,
+        -330
+      ],
+      "id": "99b96932-f2e8-4fd1-8898-fb458fc1bc74",
+      "name": "Company Detail"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        44,
+        -85
+      ],
+      "id": "d7ae2588-5bc4-46b2-a3a1-844321dfb398",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "lrYtChMu3vZ4ehmb",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c8441d6d-9617-4faf-afe7-aa4bf670c394",
+              "name": "output",
+              "value": "={{ $('Information Extractor').item.json.output }}",
+              "type": "object"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "except",
+        "excludeFields": "output['Contact Information']",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        34,
+        95
+      ],
+      "id": "5831a446-ba16-4fcb-813f-10127e8d39c1",
+      "name": "Remove contact"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "=output {{ $json.output }}",
+        "options": {
+          "fileName": "Data.csv",
+          "headerRow": true
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -264,
+        95
+      ],
+      "id": "01a963f9-e63f-4bbd-ad09-7ed66b41eb57",
+      "name": "Convert to CSV"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "00d88c6b-d0d5-4e6b-9ca8-5a8e7948945d",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "**Fit for Job:** Yes\\n\"",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        332,
+        -355
+      ],
+      "id": "dccc78f9-5130-4705-a528-b8a9be7fbb96",
+      "name": "If",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Given the following resume and job description, score it based on this framework:\n\nResume: {{ $json.output.toJsonString() }}\nJob Description: {{ $json.job_description }}\nResume criteria: {{ $json.resume_rating_criteria }}\ncompany inro: {{ $json.company_intro }}\nReturn the score breakdown along with reasoning. make sure to first mention fit for job: yes/no \nJust give yes or no like does candidate fits for the job or not according to tech stacks required, qualifications, experience, projects, educations, skills, etc.\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -44,
+        -305
+      ],
+      "id": "8a072728-607a-45db-b330-63e4b9cdd523",
+      "name": "Filter Candidates",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Generate 5 interview questions for a candidate.  Each question should consist of ONE main question and 2-3 follow-up sub-questions designed to explore the same topic in more detail.  Consider the following:\n\n*   **Candidate Resume:** \n{{ $json.output.toJsonString() }}\n*   **Company Details:** {{ $json.company_intro }}\n\n*   **Job Description:** {{ $json.job_description }}\n\nThe main question should introduce a scenario or topic or experince from projects/intership of candidate. The sub-questions should then delve deeper into specific aspects of that scenario or topic. Focus on open-ended questions that encourage the candidate to elaborate. make sure it covers questions from candidates experinece,internships also from job description, some tech stack core, behavioral or non tech questions.\nFormat the output as follows:\n\nQuestion 1:\n    Main Question: [Main Question Text]\n    Sub-Question 1: [Sub-Question Text]\n    Sub-Question 2: [Sub-Question Text]\n    Sub-Question 3: [Sub-Question Text] (Optional)\n\nQuestion 2:\n    Main Question: [Main Question Text]\n    Sub-Question 1: [Sub-Question Text]\n    Sub-Question 2: [Sub-Question Text]\n    Sub-Question 3: [Sub-Question Text] (Optional)\n\n... and so on for 5 questions.\n\nEnsure that each question, in totality, is relevant to the job description, highlights the candidate's skills and experience as described in their resume, and explores how they might fit into the company culture as described in the company details."
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        772,
+        -580
+      ],
+      "id": "f3e3f362-2c0e-4261-988e-3189ca78ff0e",
+      "name": "Question Generator"
+    },
+    {
+      "parameters": {
+        "mode": "combineBySql",
+        "query": "SELECT * FROM input1 LEFT JOIN input2"
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        552,
+        -480
+      ],
+      "id": "7149a109-eae8-4ad9-a1d6-5717b062da7c",
+      "name": "Merge",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        860,
+        -360
+      ],
+      "id": "0dd4c66e-116a-4d86-9629-2d39f4dbce71",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "lrYtChMu3vZ4ehmb",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "subject": "Interview Invitation",
+        "message": "=Dear {{ $input.item.candidate.name }},  You are invited for an interview scheduled on {{ $input.item.interviewTime }}.  Please join the meeting using the following link: {{ $input.item.meetingLink }}  Best regards, [Your Company Name]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -1080,
+        355
+      ],
+      "id": "922aeab1-a1b8-4ffe-8114-bb650a970960",
+      "name": "Gmail",
+      "webhookId": "12c59983-8418-40cf-8506-5ef6e6270bff",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ziHIhLTMp2X2e2u6",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "akshatkutariyar@gmail.com",
+          "mode": "list",
+          "cachedResultName": "akshatkutariyar@gmail.com"
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        1148,
+        -105
+      ],
+      "id": "13689820-7cf1-4803-8d5f-ca7879a2405e",
+      "name": "Google Calendar1",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "RJObNQX8h8EDoRUx",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "async function findAvailableSlotsAndPropose(candidates, interviewerCalendarId) {\n  const proposedInterviews = [];\n\n  for (const candidate of candidates) {\n    try {\n      // 1. Find Available Time Slot\n      const availableTimes = await this.$node.run(\n        'google-calendar',\n        'findEvents', // Assuming 'google-calendar' is your node name\n        {\n          calendarId: interviewerCalendarId,\n          timeMin: new Date().toISOString(), // Start from now\n          timeMax: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString(), // Check for next week\n          // Add other criteria for finding slots (e.g., duration)\n        }\n      );\n\n      // 2. Select a Suitable Time Slot (Simple Logic)\n      let selectedTimeSlot = null;\n      if (availableTimes.length > 0) {\n        selectedTimeSlot = availableTimes[0];\n      } else {\n        console.warn(`No available time slot found for ${candidate.name}`);\n        continue; // Skip to the next candidate\n      }\n\n      proposedInterviews.push({\n        candidate: candidate,\n        proposedStartTime: selectedTimeSlot.start.dateTime,\n        proposedEndTime: selectedTimeSlot.end.dateTime,\n      });\n    } catch (error) {\n      console.error(`Error finding available slot for ${candidate.name}:`, error);\n    }\n  }\n\n  return proposedInterviews;\n}\n\n// Get input data (candidates)\nconst candidates = this.getInputData(0); // Assuming candidates are the first input\n\n// Get interviewer's calendar ID\nconst interviewerCalendarId = \"interviewer@example.com\"; // Replace with the actual calendar ID\n\nconst result = await findAvailableSlotsAndPropose(candidates, interviewerCalendarId);\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        332,
+        -105
+      ],
+      "id": "912eac5b-d450-451a-ab5c-1e176d073a94",
+      "name": "Function (Schedule Interview - Find Slot)"
+    },
+    {
+      "parameters": {
+        "jsCode": "const calendarResult = this.getInputData(0);\nconst proposedInterviewData = this.getInputData(1); // Assuming the proposed data is also passed\n\nif (calendarResult && calendarResult[0]?.id) {\n  // Calendar event created successfully\n  const createdEventDetails = calendarResult[0];\n  const candidate = proposedInterviewData[0].candidate; // Assuming single candidate for now\n  const interviewTime = createdEventDetails.start.dateTime;\n\n  // Generate Meeting Link (Example - Google Meet)\n  const meetingLink = \"https://meet.google.com/xyz\"; // Replace with actual logic\n\n  return [{\n    candidate: candidate,\n    interviewTime: interviewTime,\n    meetingLink: meetingLink,\n  }];\n} else {\n  // Calendar event creation failed\n  console.error(\"Failed to create calendar event:\", calendarResult);\n  // You might want to output an error or trigger a notification\n  return []; // Or some error indicator\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1368,
+        -105
+      ],
+      "id": "d60fc29f-a0f8-4c94-9c55-28bfbb199aeb",
+      "name": "Function (Schedule Interview - Process Creation Result)"
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "value": "akshatkutariyar@gmail.com",
+          "mode": "list",
+          "cachedResultName": "akshatkutariyar@gmail.com"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        552,
+        -105
+      ],
+      "id": "4bebbf62-1a41-4cd6-afa9-d3c4931cd4c9",
+      "name": "Google Calendar",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "RJObNQX8h8EDoRUx",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function proposeInterviewTime(candidateInfo, availableTimes) {\n  if (!availableTimes || availableTimes.length === 0) {\n    console.warn(`No available time slots found for ${candidateInfo.candidate.name}`);\n    return null; // Or some indicator that no slot was found\n  }\n\n  // --- Simple Logic: Choose the first available slot ---\n  // You can implement more sophisticated logic here based on your needs.\n  const selectedSlot = availableTimes[0];\n\n  return {\n    candidate: candidateInfo.candidate,\n    proposedStartTime: selectedSlot.start.dateTime,\n    proposedEndTime: selectedSlot.end.dateTime,\n    // You might want to include the timezone if needed\n  };\n}\n\n// Get the input data\nconst candidateInfo = this.getInputData(0);\nconst availableTimesData = this.getInputData(1);\n\nlet availableTimes = [];\nif (availableTimesData && Array.isArray(availableTimesData) && availableTimesData.length > 0) {\n  // Assuming the available times are in the first item of the array\n  availableTimes = availableTimesData[0].freebusy.calendars[Object.keys(availableTimesData[0].freebusy.calendars)[0]].busy;\n}\n\nconst proposedTime = proposeInterviewTime(candidateInfo, availableTimes);\n\nreturn proposedTime ? [proposedTime] : [];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        850,
+        -105
+      ],
+      "id": "e407280f-54ac-4ed4-a84b-96bf0448fb4a",
+      "name": "Function (Schedule Interview - Propose Time)"
+    },
+    {
+      "parameters": {
+        "jsCode": "const candidateData = this.getInputData(0); // Assuming candidate data is the first input\nconst offerDetails = { // This could come from a database or configuration\n  jobTitle: \"Software Engineer\",\n  compensation: \"$100,000 per year\",\n  benefits: \"Health insurance, paid time off, etc.\",\n  startDate: \"2025-05-01\",\n  terms: \"Standard company terms and conditions apply.\",\n};\n\nconst template = `\nDear ${candidateData.name},\n\nWe are pleased to offer you the position of ${offerDetails.jobTitle} at [Your Company Name]. Your starting salary will be ${offerDetails.compensation}, along with the following benefits: ${offerDetails.benefits}. Your start date is expected to be ${offerDetails.startDate}.\n\nThis offer is subject to the terms and conditions outlined in the attached document.\n\nPlease let us know if you accept this offer by [Acceptance Deadline].\n\nSincerely,\n[Your Name/HR Department]\n`;\n\nreturn [{\n  email: candidateData.email,\n  subject: `Job Offer - [Your Company Name] - ${offerDetails.jobTitle}`,\n  body: template,\n  // You might also want to generate a PDF and output the path to attach it\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -640,
+        615
+      ],
+      "id": "ad1edfab-9312-48eb-ac13-e88440a1bd0d",
+      "name": "Function (Generate Offer Letter)"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        615
+      ],
+      "id": "37d60692-598b-45a5-8c41-ff4777066f5f",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "async function fetchCandidateData(candidateIdentifiers) {\n  const fetchedCandidates = [];\n\n  // Assuming your candidate data is stored in a way that you can access it.\n  // This could be:\n  // 1. In the output of a previous node (e.g., Information Extractor)\n  // 2. In an external database\n  // 3. In a Google Sheet\n\n  // --- Example using data from a previous node ---\n  // Assuming the output of the \"Information Extractor\" node is available\n  // and contains an array of candidate objects.\n  const allCandidates = this.getInputData(0); // Adjust index if needed\n\n  if (Array.isArray(allCandidates)) {\n    for (const identifier of candidateIdentifiers) {\n      // Assuming the identifier is an email address\n      const foundCandidate = allCandidates.find(candidate => candidate.email === identifier);\n      if (foundCandidate) {\n        fetchedCandidates.push(foundCandidate);\n      } else {\n        console.warn(`Candidate with identifier \"${identifier}\" not found.`);\n      }\n    }\n  } else {\n    console.warn(\"Input 'allCandidates' is not an array.\");\n  }\n\n  // --- Example using an external database ---\n  // You would need to use a database node (e.g., PostgreSQL, MySQL)\n  // and query the database based on the identifiers.\n  // const dbResults = await this.$node.run('your-database-node', 'your-query-operation', {\n  //   where: { email: candidateIdentifiers } // Adjust query based on your database schema\n  // });\n  // fetchedCandidates.push(...dbResults);\n\n  // --- Example using a Google Sheet ---\n  // You would need to use a Google Sheets node to read the sheet\n  // and filter rows based on the identifiers.\n  // const sheetData = await this.$node.run('google-sheets', 'readRange', { ... });\n  // fetchedCandidates.push(...filteredSheetData);\n\n  return fetchedCandidates;\n}\n\n// Get the candidate identifiers from the Manual Input/Trigger node\nconst identifiers = this.getInputData(0); // Adjust index if needed\n\nlet candidateIdentifiers = [];\nif (Array.isArray(identifiers)) {\n  candidateIdentifiers = identifiers.map(item => item.value); // Adjust based on the structure of your trigger output\n} else if (identifiers && identifiers.value) {\n  candidateIdentifiers = [identifiers.value];\n} else {\n  console.warn(\"No candidate identifiers found in the input.\");\n  return [];\n}\n\nconst fetchedData = await fetchCandidateData(candidateIdentifiers);\n\nreturn fetchedData;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -860,
+        615
+      ],
+      "id": "5c1d5f3b-f424-4a15-8d93-a654039fb93e",
+      "name": "Function (Fetch Candidate Data)"
+    },
+    {
+      "parameters": {
+        "subject": "Job Offer - [Your Company Name] - {{ $input.item.jobTitle }}",
+        "message": "=Dear {{ $input.item.name }},  Please find your job offer from [Your Company Name] below:  {{ $input.item.body }}  We look forward to welcoming you to the team!  Sincerely, [Your Name/HR Department]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -420,
+        615
+      ],
+      "id": "0ce24878-2d40-46e6-accc-93cedcf6e982",
+      "name": "Gmail1",
+      "webhookId": "6d54a496-ad20-45d8-b25b-d91b50fa4ace",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ziHIhLTMp2X2e2u6",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor": {
+      "main": [
+        [
+          {
+            "node": "Convert to CSV",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Company Detail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Company Detail": {
+      "main": [
+        [
+          {
+            "node": "Filter Candidates",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Filter Candidates",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to CSV": {
+      "main": [
+        [
+          {
+            "node": "Remove contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Filter Candidates": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Function (Schedule Interview - Find Slot)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Question Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Question Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar1": {
+      "main": [
+        [
+          {
+            "node": "Function (Schedule Interview - Process Creation Result)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function (Schedule Interview - Find Slot)": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        []
+      ]
+    },
+    "Function (Schedule Interview - Process Creation Result)": {
+      "main": [
+        []
+      ]
+    },
+    "Google Calendar": {
+      "main": [
+        [
+          {
+            "node": "Function (Schedule Interview - Propose Time)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function (Schedule Interview - Propose Time)": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function (Generate Offer Letter)": {
+      "main": [
+        [
+          {
+            "node": "Gmail1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Function (Fetch Candidate Data)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function (Fetch Candidate Data)": {
+      "main": [
+        [
+          {
+            "node": "Function (Generate Offer Letter)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "aa309922-9f5f-4b0b-b05f-1a4e6bfba534",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "166eb49f86da54099c7972cd7def207ce1e2d256cba18c25be6d48a36c586d4c"
+  },
+  "id": "muiWTs6JjBGAj6Md",
+  "tags": []
+}
